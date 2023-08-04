@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router , Routes ,Route } from 'react-router-dom';
-import Home from './Components/Home';
-import MovieDetail  from './Components/MovieDetail';
-import PageNotFound from './Components/PageNotFound';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+import Home from "./Components/Home";
+import PageNotFound from "./Components/PageNotFound";
+import MovieDetail from "./Components/MovieDetail";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header/>
+    <div >
+      <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path='/' exact Component={<Home />}></Route>
-          <Route path='/movie/:imdbID' Component={<MovieDetail />}></Route>
-          <Route Component={PageNotFound}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:imdbID" element={<MovieDetail />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer></Footer>
-      </Router>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
